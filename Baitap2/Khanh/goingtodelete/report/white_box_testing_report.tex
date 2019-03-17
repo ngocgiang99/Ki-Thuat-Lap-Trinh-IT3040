@@ -1,0 +1,71 @@
+\documentclass{report}
+\usepackage[utf8]{vietnam}
+\usepackage{graphicx}
+
+\author{Trương Quang Khánh}
+\title{Báo cáo bài tập 2 - Kĩ thuật lập trình}
+
+\begin{document}
+    \maketitle
+    \section{White Box Testing}
+    \subsection{Kiểm thử hàm Merge}
+    Hàm Merge được sử dụng để trộn hai dãy mà hàm MergeSort đã 
+    sắp xếp trước đó thành một dãy tăng dần hoặc giảm dần. \\
+    Như vậy, để kiểm tra hàm Merge, hai dãy ta nhập vào phải được hàm
+    MergeSort xử lí trước đó. Ta có thể giải quyết điều này bằng cách dùng
+    Driver, hoặc là ta sẽ cung cấp các dãy được sắp xếp sẵn để kiểm tra hàm
+    Merge. \\ 
+    Trước tiên, ta sẽ kiểm tra các đường cơ bản của hàm Merge. \\
+    Các trường hợp đó gồm có như:
+    \begin{itemize}
+        \item Phần tử của dãy thứ nhất được chọn.
+        \item Phần tử của dãy thứ hai được chọn.
+        \item Dãy thứ nhất được chọn hết phần tử trước.
+        \item Dãy thứ hai được chọn hết phần tử trước.
+    \end{itemize}
+    Với các trường hợp trên, ta có các test tương ứng như sau:
+    \begin{itemize}
+        \item Dãy 1: 1 \\ Dãy 2: 2
+        \item Dãy 1: 2 \\ Dãy 2: 1
+        \item Dãy 1: 6 7 8 9 10 \\ Dãy 2: 1 2 3 4 5
+        \item Dãy 1: 1 2 3 4 5  \\ Dãy 2: 6 7 8 9 10
+        \item Dãy 1: 1 3 5 7 9  \\ Dãy 2; 2 4 6 8 10
+        \item Dãy 1: 1 4 9 10 15  \\ Dãy 2: 5 7 9 10 11
+    \end{itemize}
+    Tiếp theo, ta sẽ xét đến các trường hợp biên có thể xảy ra:
+    \begin{itemize}
+        \item Cả hai dãy có các phần tử giống nhau.
+        \item Dãy 1 và dãy 2 gồm các phần tử giống nhau
+        \item Phần tử nhỏ nhất của dãy 1 lớn hơn phần tử lớn nhất của dãy 2 hoặc ngược lại.
+        \item Dãy 1 và dãy 2 không thay đổi gì so với thứ tự của dãy sau khi được sắp xếp.
+    \end{itemize}
+    Với các trường hợp trên, ta đưa ra các test tương ứng là:
+    \begin{itemize}
+        \item Dãy 1: 1 2 3 4 5 \\ Dãy 2: 1 2 3 4 5
+        \item Dãy 1: 0 0 0 0 0  \\ Dãy 2: 1 1 1 1 1 
+        \item Dãy 1: 1 1 1 1 1  \\ Dãy 2: 0 0 0 0 0 
+        \item Dãy 1: 1 2 3 4 5  \\ Dãy 2: 6 7 8 9 10
+        \item Dãy 1: 1 3 5 7 9  \\ Dãy 2: 2 4 6 8 10
+        \item Dãy 1: 0  \\ Dãy 2: 1
+    \end{itemize}
+
+    \subsection{Kiểm thử hàm Sort}
+    Trong hàm này, ta sẽ kiểm tra xem quá trình đệ quy có dừng lại hay không, 
+    các hàm đệ quy con có phải là phân hoạch của hàm gọi đệ quy không.
+    Như vậy, các trường hợp ta phải kiểm tra là:
+    \begin{itemize}
+        \item Điểm phân hoạch có đúng không.
+        \item Hàm có dừng lại trong một số trường hợp đặc biệt khi mà không phải gọi đến hàm đệ quy.
+        \item Các trường hợp biên.
+    \end{itemize}
+    Với các trường hợp trên, ta đưa ra các test tương ứng là:
+    \begin{itemize}
+        \item 1
+        \item 1 2 3 4 5 6 7 8 9 10 
+        \item 10 9 8 7 6 5 4 3 2 1 
+        \item 0 0 0 0 0 0 0 0 0 0
+        \item 1 0 1 0 1 0 1 0 1 0
+        \item 1 0 0 0 0 0 0 0 0 0
+        \item 1 6 3 5 7 4 8 2 9 10
+    \end{itemize}
+\end{document}
