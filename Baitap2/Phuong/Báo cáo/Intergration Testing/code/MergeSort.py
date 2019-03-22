@@ -1,66 +1,42 @@
-                                # D merge
+def __validate_(arr):
+    if (type(arr) is not list):
+        return False
+    for x in arr:
+        if (type(x) is not int):
+            return False
+    return True
+
 def merge(arrLeft, arrRight):
-    newlist = []
-
-    lenL = len(arrLeft)
-    lenR = len(arrRight)
-    idxL=0 
-    idxR=0
-
-    while (idxL < lenL) & (idxR < lenR):
-        if arrLeft[idxL] < arrRight[idxR]:
-            newlist.append(arrLeft[idxL])
-            idxL = idxL + 1
+    if (not __validate_(arrLeft)):
+        raise ValueError("arrLeft is not a list of int!")
+    if (not __validate_(arrRight)):
+        raise ValueError("arrRight is not a list of int!")
+    lenL = len(arrLeft); lenR = len(arrRight)
+    result = []; idxL = 0; idxR = 0
+    
+    while idxL < lenL and idxR < lenR:
+        if (arrLeft[idxL] < arrRight[idxR]):
+            result.append(arrLeft[idxL])
+            idxL += 1
         else:
-            newlist.append(arrRight[idxR])
-            idxR = idxR + 1
-
+            result.append(arrRight[idxR])
+            idxR += 1
     while idxL < lenL:
-        newlist.append(arrLeft[idxL])
-        idxL = idxL + 1
-
+        result.append(arrLeft[idxL])
+        idxL += 1
     while idxR < lenR:
-        newlist.append(arrRight[idxR])
-        idxR = idxR + 1
+        result.append(arrRight[idxR])
+        idxR += 1
 
-    return newlist
-                                # end D
+    return result
 
-                                # B
-def merge_sort(arr):
-    if len(arr) <= 1:
+def sort(arr):
+    if (not __validate_(arr)):
+        raise ValueError("arr is not a list of int!")
+    if (len(arr) <= 1):
         return arr
-
-                                # C divide arr into
-    mid = len(arr)//2
-    arrLeft = arr[0 : mid]
-    arrRight = arr[mid : len(arr)]
-                                # end C
-                                
-    arrLeft = merge_sort(arrLeft)
-    arrRight = merge_sort(arrRight)
-
-                                # D merge_sort two small lists
-    arr = merge(arrLeft, arrRight)
-                                # end D
-
-    return arr
-
-                                # end B 
-
-                                # A
-def main():
-    print("input a list:")
-    arr = []
-    n = int(input())
-    for i in range(n):
-        arr.append(int(input()))
-
-    arr = merge_sort(arr)
-    print("sorted list:")
-    print(arr)
-
-    a = input('press any key to exit smilie')
-                                # end A
-
-main()
+    middle = len(arr) // 2
+    arrLeft = sort(arr[0: middle])
+    arrRight = sort(arr[middle: len(arr)])
+    result = merge(arrLeft, arrRight)
+    return result
