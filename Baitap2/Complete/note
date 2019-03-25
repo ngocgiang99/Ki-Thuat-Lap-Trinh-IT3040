@@ -1,0 +1,5 @@
+- Độ phức tạp ổn định O(nlog(n))
+- Tuy độ phức tạp trung bình là O(nlog(n)) nhưng trung bình mergesort chạy chậm hơn Quicksort.
+- Thích hợp để kiểm thử các module cỡ vừa và nhỏ. Vì ta cần kiểm tra hết các module của chương trình, nên nếu chương trình lớn thì chi phí kiểm thử rất lớn. Vì vậy chúng ta phải chia ra thành các module đủ nhỏ để test được một cách hiệu quả.
+- Dùng để kiểm thử các trường hợp mà phát sinh ra trong khi người dùng sử dụng mà có thể lập trình viên chưa nghĩ tới và các trường hợp xảy ra trong thực tế đã có output đúng sẵn
+- Rất tiện để phát hiện lỗi nằm trong module nào hoặc giữa interface các module để dùng các kiểm thử khác để phát hiện cụ thể lỗi ấy.

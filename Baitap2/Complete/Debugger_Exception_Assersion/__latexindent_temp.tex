@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage[utf8]{vietnam}
+
+\title{Sử dụng debugger JDB và PDB cho Java và Python}
+ 
+\begin{document}
+    \section{Sử dụng debugger JDB và PDB cho Java và Python}
+
+    Các ngôn ngữ lập trình thường được cung cấp các bộ công cụ hỗ trợ 
+    debug. Các chức năng thường thấy trong các bộ công cụ này bao gồm:
+    \begin{itemize}
+        \item {Breakpoint (điểm dừng): Cho phép lập trình viên dừng 
+        chương trình tại điểm xác định và theo dõi các giá trị tại điểm
+        dừng hiện thời, từ đó suy luận ra lỗi. Điểm dừng có thể có hoặc
+        không đi kèm điều kiện kích hoạt (conditional breakpoint).}
+        \item {Stepping (thực hiện từng bước): Cho phép lập trình viên
+        chạy chương trình theo từng bước một thay vì liên tục, cũng như
+        theo dõi các giá trị ở từng bước.}
+        \item {Stack Trace (truy vết ngăn xếp): Cho phép lập trình viên
+        theo dõi call stack (ngăn xếp lệnh) để biết được lệnh nào đang
+        gọi lệnh nào vào một thời điểm xác định.}
+    \end{itemize}
+
+    Hai ngôn ngữ Java và Python được cung cấp sẵn hai bộ công cụ debug
+    mặc định là JDB và PDB.
+
+    \subsection{JDB - Java Debugger}
+    \textbf{jdb} là một bộ công cụ debug sử dụng command line dành cho Java.
+    Nó hỗ trợ khả năng debug code Java chạy trên máy ảo nội bộ hoặc từ xa.
+
+    \subsubsection{Khởi động một tiến trình jdb}
+    Cú pháp chung để khởi động jdb trên giao diện command line là 
+    \begin{verbatim}
+        jdb [ options ] [ class ] [ arguments ]
+    \end{verbatim}
+    Trong đó:
+    \begin{itemize}
+        \item {options: các cài đặt cho tiến trình hiện tại.}
+        \item {class: class để thực hiện debug.}
+        \item {arguments: các tham số truyền vào chương trình, giống như khi
+        khởi tạo máy ảo Java bình thường.}
+    \end{itemize}
+    
+    Có hai cách thông dụng để tạo tiến trình jdb. Cách thứ nhất là yêu cầu jdb
+    khởi tạo một máy ảo mới để chạy class cần được debug. Ví dụ:
+    \begin{verbatim}
+        jdb MyClass
+    \end{verbatim}
+    Khi được khởi tạo theo cách này, máy ảo Java sẽ tạm dừng trước khi bắt đầu
+    thực hiện chỉ thị đầu tiên của chương trình.
+
+    Cách thứ hai là kết nối jdb với một máy ảo đang chạy. Máy ảo đang chạy cần 
+    phải sử dụng cài đặt:
+    \begin{verbatim}
+        -agentlib:jdwp=transport=dt_shmem,server=y,suspend=n
+    \end{verbatim}
+    để chuẩn bị các thư viện debug và chỉ thị cụ thể cách thức kết nối cho jdb. 
+    Ví dụ: để khởi chạy class MyClass cho việc debug:
+    \begin{verbatim}
+        java -agentlib:jdwp=transport=dt_shmem,
+            address=jdbconn,server=y,suspend=n MyClass
+    \end{verbatim}
+    Khi đó ta có thể kết nối với jdb bằng lệnh:
+    \begin{verbatim}
+        jdb -attach jdbconn 
+    \end{verbatim}
+    Chú ý rằng class MyClass không được truyền vào jdb, vì ta đang không khởi tạo máy
+    ảo mới.
+
+    \subsubsection{Các lệnh jdb cơ bản}
+    Để sử dụng breakpoint, ta có một số cú pháp:
+    \begin{itemize}
+        \item {stop at MyClass:22 \textit{(Đặt breakpoint ở dòng thứ 22 của 
+        file MyClass)}.}
+        \item {stop in java.lang.String.length \textit{(Đặt breakpoint ở đầu của hàm\\
+        java.lang.String.length)}.}
+        \item {stop in MyClass.<init> \textit{(Đặt breakpoint tại đầu hàm khởi tạo của class MyClass)}.}
+        \item {stop in MyClass.<clinit> \textit{(Đặt breakpoint tại đầu hàm khởi tạo static của class MyClass)}.}
+    \end{itemize}
+\end{document}
