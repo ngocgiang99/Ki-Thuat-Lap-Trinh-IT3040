@@ -34,7 +34,7 @@ def __sort_recursive_(arr, fr, to):
     length = to - fr
     if (length <= 1):
         return
-    middle = fr + length // 2
+    middle = fr + (length >> 1)
     __sort_recursive_(arr, fr, middle)
     __sort_recursive_(arr, middle, to)
     __merge_(arr, fr, middle, to)

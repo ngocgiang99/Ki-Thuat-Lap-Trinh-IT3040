@@ -38,7 +38,7 @@ public class MergeSort {
         int length = to - from;
         if (length <= 1)
             return;
-        int middle = from + length / 2;
+        int middle = from + (length >> 1);
         sortRecursive(arr, from, middle);
         sortRecursive(arr, middle, to);
         merge(arr, from, middle, to);
