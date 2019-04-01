@@ -3,6 +3,7 @@
 \usepackage[utf8]{vietnam}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{adjustbox}
 
 \title{Code Tuning và Optimization}
 
@@ -194,7 +195,7 @@
     \end{itemize}
 
     Các chương trình đọc dữ liệu từ file test.txt, chứa một dãy các số
-    nguyên được sinh ngẫu nhiên trong khoảng $[-10^9, 10^9]$. Chương 
+    nguyên được sinh ngẫu nhiên theo phân phối chuẩn. Chương 
     trình Java sẽ thực hiện sắp xếp dãy số $10^7$ phần tử, trong khi 
     chương trình Python sẽ thực hiện trên dãy số $10^6$ phần tử. Điều
     này là do Python là ngôn ngữ thông dịch, và do đó có tốc độ chậm hơn so
@@ -224,5 +225,45 @@
     Nhóm cũng sử dụng \href{https://github.com/pshved/timeout}{timeout},
     một chương trình Perl nhỏ cho phép đo đạc lại thời gian hoạt động và 
     lượng tài nguyên sử dụng của chương trình command line trên Linux.
+
+    \subsubsection{Số liệu đo đạc}
+
+    \begin{table}[ht]
+        \begin{center}
+        \begin{adjustbox}{width=\textwidth}
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                Ngôn ngữ & Thời gian chạy trước tối ưu & Thời gian chạy sau tối ưu & Mức độ cải tiến \\
+                \hline
+                Java & 3444 ms & 2907 ms & 39.11\% \\
+                Python & 2340 ms & 1442 ms & 38.38\% \\
+                \hline
+            \end{tabular}
+        \end{adjustbox}
+        \end{center}
+        \caption{Số liệu đo đạc thời gian chạy của chương trình}
+    \end{table}
+
+    \begin{table}[ht]
+        \begin{center}
+        \begin{adjustbox}{width=\textwidth}
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                Ngôn ngữ & Bộ nhớ sử dụng trước tối ưu & Bộ nhớ sử dụng sau tối ưu & Mức độ cải tiến \\
+                \hline
+                Java & 302227 byte & 265681 byte & 12.09\% \\
+                Python & 99893 byte & 100211 byte & 0.32\% \\
+                \hline
+            \end{tabular}
+        \end{adjustbox}
+        \end{center}
+        \caption{Số liệu đo đạc thời gian chạy của chương trình}
+    \end{table}
+
+    \subsubsection{Nhận xét}
+    Phần lớn các cải tiến được đề xuất trong báo cáo đã cho thấy hiệu quả rõ rệt:
+    Hiệu năng của chương trình được cải thiện tới gần 40\%. Mức độ yêu cầu bộ nhớ 
+    Java giảm hơn 12\%. Tuy nhiên, vẫn xảy ra ngoại lệ trên số liệu về bộ nhớ của 
+    Python.
 
 \end{document}

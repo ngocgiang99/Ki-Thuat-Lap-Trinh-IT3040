@@ -1,10 +1,18 @@
+import java.io.File;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class MergeSortOld {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        File inputFile = new File("test.txt");
+        Scanner scanner;
+        try {
+            scanner = new Scanner(inputFile);    
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
         int n = scanner.nextInt();
         int[] arr = new int[n];
         for(int i = 0; i < n; i ++)
