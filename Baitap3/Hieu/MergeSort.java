@@ -1,5 +1,5 @@
 import java.io.File;
-import java.util.Arrays;
+import java.time.Instant;
 import java.util.Scanner;
 
 public class MergeSort {
@@ -17,39 +17,46 @@ public class MergeSort {
         for(int i = 0; i < n; i ++)
             arr[i] = scanner.nextInt();
         
+        long startTime = Instant.now().toEpochMilli();
         sort(arr);
+        long endTime = Instant.now().toEpochMilli();
+        long runTime = endTime - startTime;
+        System.out.println(runTime);
         scanner.close();
     }
+
+    private static int[] cache;
 
     public static void sort(int[] arr) {
         if (arr == null)
             return;
-        _sort(arr, 0, arr.length);
+        cache = new int[arr.length];
+        sortRecursive(arr, 0, arr.length);
     }
 
-    private static void _sort(int[] arr, int from, int to) {
+    private static void sortRecursive(int[] arr, int from, int to) {
         int length = to - from;
         if (length <= 1)
             return;
         int middle = from + length / 2;
-        _sort(arr, from, middle);
-        _sort(arr, middle, to);
+        sortRecursive(arr, from, middle);
+        sortRecursive(arr, middle, to);
         merge(arr, from, middle, to);
     }
 
     public static void merge(int[] arr, int from, int middle, int to) {
-        int[] left = Arrays.copyOfRange(arr, from, middle);
-        int[] right = Arrays.copyOfRange(arr, middle, to);
-        int idLeft = 0, idRight = 0, iterPos = from;
-        while(idLeft < left.length && idRight < right.length) {
-            if (left[idLeft] < right[idRight])
-                arr[iterPos ++] = left[idLeft ++];
+        for(int i = from; i < to; i ++)
+            cache[i] = arr[i];
+        int idLeft = from, idRight = middle, iterPos = from;
+        while(idLeft < middle && idRight < to) {
+            if (cache[idLeft] < cache[idRight])
+                arr[iterPos ++] = cache[idLeft ++];
             else
-                arr[iterPos ++] = right[idRight ++];
+                arr[iterPos ++] = cache[idRight ++];
         }
-        while(idLeft < left.length)
-            arr[iterPos ++] = left[idLeft ++];
-        while(idRight < right.length)
-            arr[iterPos ++] = right[idRight ++];
+        while(idLeft < middle)
+            arr[iterPos ++] = cache[idLeft ++];
+        while(idRight < to)
+            arr[iterPos ++] = cache[idRight ++];
     }
 }

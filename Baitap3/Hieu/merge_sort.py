@@ -1,3 +1,5 @@
+import datetime
+
 def __validate_(arr):
     if (type(arr) is not list):
         return False
@@ -6,49 +8,50 @@ def __validate_(arr):
             return False
     return True
 
-def merge(left, right):
-    if (not __validate_(left)):
-        raise ValueError("left is not a list of int!")
-    if (not __validate_(right)):
-        raise ValueError("right is not a list of int!")
-    lenL = len(left); lenR = len(right)
-    result = []; idLeft = 0; idRight = 0
-    for i in range(lenL + lenR):
-        if (idLeft == lenL):
-            result.append(right[idRight])
-            idRight += 1
+def __merge_(arr, fr, middle, to):
+    cache = arr[fr:to]
+    idLeft = fr; idRight = middle; iterPos = fr
+    while (idLeft < middle and idRight < to):
+        if (cache[idLeft - fr] < cache[idRight - fr]):
+            arr[iterPos] = cache[idLeft - fr]
+            idLeft += 1
         else:
-            if (idRight == lenR):
-                result.append(left[idLeft])
-                idLeft += 1
-            else:
-                if (left[idLeft] < right[idRight]):
-                    result.append(left[idLeft])
-                    idLeft += 1
-                else:
-                    result.append(right[idRight])
-                    idRight += 1
-    return result
+            arr[iterPos] = cache[idRight - fr]
+            idRight += 1
+        iterPos += 1
+
+    while (idLeft < middle):
+        arr[iterPos] = cache[idLeft - fr]
+        iterPos += 1
+        idLeft += 1
+
+    while (idRight < to):
+        arr[iterPos] = cache[idRight - fr]
+        iterPos += 1
+        idRight += 1
+
+def __sort_recursive_(arr, fr, to):
+    length = to - fr
+    if (length <= 1):
+        return
+    middle = fr + length // 2
+    __sort_recursive_(arr, fr, middle)
+    __sort_recursive_(arr, middle, to)
+    __merge_(arr, fr, middle, to)
 
 def sort(arr):
     if (not __validate_(arr)):
         raise ValueError("arr is not a list of int!")
-    if (len(arr) <= 1):
-        return arr
-    middle = len(arr) // 2
-    left = sort(arr[0: middle])
-    right = sort(arr[middle: len(arr)])
-    result = merge(left, right)
-    breakpoint()
-    return result
+    __sort_recursive_(arr, 0, len(arr))
 
 def main():
-    array = []
-    n = int(input())
-    for i in range(n):
-        a = int(input())
-        array.append(a)
-    array = sort(array)
-    for i in range(n):
-        print(array[i])
+    inputFile = open("test.txt", "r")
+    n = int(inputFile.readline())
+    array = list(map(int, inputFile.readline().split()))
+
+    start_time = datetime.datetime.now()
+    sort(array)
+    end_time = datetime.datetime.now()
+    print(end_time - start_time)
+    
 main()
