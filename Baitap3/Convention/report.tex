@@ -1,0 +1,170 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{vietnam}
+\author{Truong Quang Khanh}
+
+\begin{document}
+	\chapter{Giới thiệu chung}
+	Tại sao lại cần đến các quy ước chuẩn chung khi viết code? \\
+    Thực tế, 80\% thời gian sử dụng của các phần mền cần được bảo trì. Nhưng không phải lần 		bảo trì nào cũng được thực hiện bởi chính người đã viết ra phần mền đó, hay có nghĩa là 	các lập trình viên sẽ phải thao tác trên mã nguồn của người khác. Do đó, cần có một quy 	chuẩn viết code chung để có thể tăng khả năng dễ đọc của code, cho phép người lập trình 	hiểu code nhanh và kĩ càng hơn. Ngoài ra, khi viết code theo quy ước chung cũng giống 			như mặc đồng phục cho sản phẩm của mình, thể hiện sự "gọn gàng, ngăn lắp", tăng độ tin 		cậy cho sản phẩm.
+	\chapter{Các quy ước chuẩn khi code trong ngôn ngữ java}
+	\section{Cấu trúc của file mã nguồn java}
+    Một file mã nguồn Java sẽ cấu trúc theo thứ tự như sau:
+    \begin{itemize}
+        \item Dòng comment giới thiệu ngắn gọn về phiên bản, bản quyền và chức năng của 				file mã nguồn.
+        \item Khai báo package rồi import statement.
+        \item Viết class/interface documentation comment (/** ... */)
+        \item Khai báo các class và interface.
+        \item Khai báo biến toàn cục, theo thứ tự từ public, protected đến private.
+        \item Khai báo hàm khởi tạo.
+        \item Khai báo các phương thức.
+    \end{itemize}
+    \section{Khoảng cách thụt đầu dòng và bố cục dòng code} 
+        \begin{itemize}
+            \item[-] Khoảng cách thụt đầu dòng \\
+            Một lần thụt vào để biểu thị quan hệ giữa các lệnh có độ dài là 4 space, thường 			thì điều này đã được mặc định sẵn trong editor.
+            \item[-] Đọ dài dòng code  \\
+            Không nên viết dòng code chứa quá 80 kí tự, do một số terminal không hỗ trợ các 			trường hợp đó.
+            \item[-] Xuống dòng khi đoạn code không phù hợp với một dòng code hiện tại
+            \begin{itemize}
+                \item Vị trí ngắt sau dấu phẩy và trước toán tử.
+                \item Nên ngắt ở các toán hạng có thứ tự thực hiện thấp hơn.
+                \item Khi ngắt dòng nên sắp xếp các tham số có cùng chức năng thẳng hàng 					nhau.
+            \end{itemize}
+            \item[-] Dưới đây là một số ví dụ:  \\
+            \hspace*{10mm} function(longExpression1, longExpression2, longExpression3, \\
+            \hspace*{24mm}    longExpression4, longExpression5);
+        \end{itemize}
+	\section{Comment}
+	\subsection{Block Comment}
+	\begin{itemize}
+		\item Thường được dùng để mô tả file, thuật toán, cấu trúc dữ liệu, hàm.
+		\item Thường được đặt trước hàm, file, hoặc nếu trong hàm thì được đặt cùng số dòng 
+			  thụt vào với đoạn code nó mô tả. 
+		\item Đây là một ví dụ của block comment \\
+		\hspace*{6mm} /* \\
+		\hspace*{8mm}   * Đây là một ví dụ về block comment  \\
+		\hspace*{8mm}   * / 
+	\end{itemize}
+	\subsection{Single-Line Comment}
+	\begin{itemize}
+		\item Nếu comment chỉ trên một dòng thì sẽ dùng Single-Line Comment, có cùng số dòng 
+			  thụt vào với đoạn code.
+		\item Sau đây là ví dụ của một Single-Line Comment
+		\begin{verbatim}
+			if (condition} {
+			     /* Write Comment in here */
+			}
+		\end{verbatim}
+	\end{itemize}
+	\subsection{Trailing Comment}
+	\begin{itemize}
+		\item Là một đoạn comment ngắn cùng dòng với code
+		\item Trong một khối code thì các Trailing Comment sẽ được thụt ra sao cho thẳng hàng 
+			  với nhau.
+	\end{itemize}
+	\subsection{End-Of-Line Comment}
+	\begin{itemize}
+		\item Trên cùng một dòng code, sau // sẽ là comment, chương trình dịch sẽ bỏ qua nó
+		\item Thường được dùng để comment từng phần của dòng code.
+	\end{itemize}
+	\subsection{Documentation Comment}
+	\begin{itemize}
+		\item Doc-Comment được dùng để mô tả về class, interface, công cụ khởi tạo, phương 
+		thức và các trường. Mỗi giao diện chương trình sẽ có một doc-comment.
+		\item Doc-comment thường được được đặt trước khai báo, ví dụ:
+		\begin{verbatim}
+			    /**
+			     * Ví dụ về doc-comment.
+			     */
+			    class Example{
+			      ...
+			    }
+		\end{verbatim}
+		\item Doc Comment có thể phân tách thành file HTML bằng các công cụ của java.
+	\end{itemize}
+	\section{Declarations}
+	\begin{itemize}
+		\item Nên sử dụng một khai báo trên một dòng code.
+		\item Không khai báo khác kiểu trên cùng một dòng.
+		\item Các biến địa phương nên được khai báo trên đầu khối code sử dụng chúng.
+		\begin{verbatim}
+			void MyMethod() {
+			   int int1;         // beginning of method block
+			
+			   if (condition) {
+			    int int2;        // beginning of "if" block
+			    ...
+			   }
+		\end{verbatim}
+	\end{itemize}
+	\section{Các quy ước đặt tên}
+	\begin{itemize}
+		\item Tên của class sẽ là danh từ, với các chữ cái đầu của từng từ được viết hoa.
+		\item Cách đặt tên của interface giống với class.
+		\item Tên phương thức là động từ, với chữ cái của từ đầu tiên được viết thường, còn 
+		chữ cái đầu tiên của các từ tiếp theo được viết hoa.
+		\item Cách đặt tên biến cũng giống như phương thức, tránh các trường hợp tên biến 
+		quá dài hoặc chỉ có một kí tự, trừ các trường hợp là biến đếm tạm thời.
+		\item Cách đặt tên các hằng số là toàn bộ bởi các chữ cái in hoa, các từ được nối 
+		với nhau bởi "\_".
+	\end{itemize}
+	\chapter{Các quy ước chuẩn khi code trong ngôn ngữ Python}
+	Về các quy tắc cơ bản thì trong Python cũng quy ước giống trong Java.
+	 Do Python 2 và Python 3 sẽ có các định dạng 
+	chuẩn khác nhau nên dưới đây chỉ nói những phần chung nhất của cả hai.
+	\section{Code Lay-Out}
+	\subsection{Indentation}
+	\begin{itemize}
+		\item Sử dụng 4 khoảng trắng mỗi mức thụt vào đầu dòng.
+		\item Các dòng nằm trong cùng khối code thì được xếp thẳng hàng.
+		\item Khi ngắt dòng các dòng code thì các đoạn code hay các thành phần code
+		có cùng chức năng sẽ được xếp thẳng hàng.
+		\item Trong if-else statement, nếu điều kiện viết trong một dòng không đủ thì
+		có thể ngất dòng, thêm dấu ngoặc đơn vào điều kiện, dữ các tham chiếu thẳng hàng 
+		với nhau.
+		\item Khi có nhiều dòng trong ngoặc đơn, ngoặc móc, thì dấu đóng ngoặc sẽ nằm ở
+		dòng khác sau dòng cuối cùng của dãy code trong ngoặc. Ví dụ:
+		\begin{verbatim}
+			         my_list = [
+    			        1, 2, 3,
+    			        4, 5, 6,
+    			    ]
+    		\end{verbatim}
+	\end{itemize}
+	\subsection{Độ dài dòng code}
+	\hspace*{8mm} Một dòng code nói chung sẽ không có đến 80 kí tự trên một dòng, trong các 
+	block code thì độ dài không quá 72 kí tự.
+	\subsection{Import}
+	\begin{itemize}
+		\item Một dòng chỉ có một Import
+		\item Import đứng ở đầu của file, chỉ sau comment hoặc docstring.
+	\end{itemize}		
+	\subsection{Naming Conventions}
+	\begin{itemize}
+		\item Python không có cú pháp chặt chẽ cho các đối tượng private như trong java. Nhưng quy ước chung là, bắt đầu tên 		với kí tự "\_" nhằm chỉ thị rằng đây là thành phần private, 
+		không nên truy cập đến các thành phần này từ bên ngoài.
+		\item Dùng kí tự "\_" ở đuôi của tên để tránh sự trùng lặp với các tên, từ khoá,...
+		đã sẵn có.
+		\item Tên của Class sẽ được viết hoa chữ cái đầu tiên của các từ. \\
+		VD: ClassName
+		\item Tên của các Exception giống như cách đặt với tên của class, thường thêm 
+		hậu tố Error để phân biệt.
+		\item Tên của hàm sẽ là các chữ cái viết thường, các từ được cách nhau bởi "\_", mục 
+		đích tăng khả năng đọc.
+		\item Quy tắc đặt tên biến cũng giống như tên hàm.
+		\item Tên các hằng số được viết hoa tất cả chữ cái,các từ được cách nhau bởi kí tự "\_"
+	\end{itemize}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
