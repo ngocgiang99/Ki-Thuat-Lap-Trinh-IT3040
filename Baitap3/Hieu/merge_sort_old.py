@@ -52,4 +52,6 @@ def main():
     sort(array)
     end_time = datetime.datetime.now()
     print(end_time - start_time)
-main()
+
+if __name__ == '__main__':
+    main()
