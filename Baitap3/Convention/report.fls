@@ -1,0 +1,53 @@
+PWD /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.tex
+OUTPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.log
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/vietnam.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/vietnam.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.dfu
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.dfu
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmr.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr10.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/vncaps.tex
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/vncaps.tex
+INPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.aux
+INPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.aux
+OUTPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.aux
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr17.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
+OUTPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.pdf
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vntt10.tfm
+INPUT /home/khanh/Documents/coding technic/Ki-Thuat-Lap-Trinh-IT3040/Baitap3/Convention/report.aux
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx12.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vntt10.pfb
